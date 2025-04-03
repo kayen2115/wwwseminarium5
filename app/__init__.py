@@ -16,9 +16,6 @@ def create_app():
 
     # Konfiguracja aplikacji (m.in. połączenie do bazy danych)
     app.config.from_object(Config)  # Wczytanie konfiguracji z pliku config.py
-    # app.config['SECRET_KEY'] = 'tajny_klucz'  # potrzebny np. do CSRF, sesji
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../instance/korona.db'  # połączenie do SQLite
-    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # wyłączenie ostrzeżenia
 
     # Inicjalizacja rozszerzenia SQLAlchemy (podpięcie bazy do aplikacji Flask)
     db.init_app(app)

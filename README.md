@@ -37,16 +37,30 @@ python -m venv venv
 source venv/bin/activate      # (Linux/macOS)
 venv\Scripts\activate         # (Windows)
 
-Zainstaluj zależności:
+1. Zainstaluj zależności:
 pip install -r requirements.txt
 
-Uruchom aplikację:
+2. Dodaj ustawienie zmiennej zmianną FLASK_APP do środowiska wirtualnego:
+- jeśli używasz PowerShell to dodaj w pliku /venv/Scripts/Activate.ps1 tuż przed linią '# SIG # Begin signature block' dodaj następująca linię:
+  $env:FLASK_APP = "migrate.py"
+- jeśli używasz CMD to dodaj w pliku /venv/Scripts/activate.bat tuż przed linią :END dodaj następującą linię:
+  set FLASK_APP=migrate.py
+
+
+3. Załóż bazę danych korzystajac z migracji:
+sprawdz czy jest ustawiona zmeinna FLASK_APP: $env:FLASK_APP -> powinno być: migrate.py. Jeśłi nie jest to ustaw: $env:FLASK_APP = "migrate.py"
+kroki: 
+flask db init
+flask db migrate -m "Inicjalna baza danych"
+flask db upgrade
+
+4. Uruchamianie testowych aplikacji:
+python -m app.crud --- wpisuje szczytu do tableli peaks
+python -m app.crud_relations  ---wpisuje uzytkowników do tabeli user oraz wejścia do tablei peak_entry
+
+5. Uruchom aplikację:
 python run.py
 Wejdź na: http://127.0.0.1:5000
-
-Uruchamianie testowych aplikacji:
-python -m app.crud
-python -m app.crud_relations
 
 
 📊 Tematy edukacyjne
@@ -58,6 +72,7 @@ W ramach projektu studenci poznają m.in.:
     obsługa formularzy i przesyłanie plików,
     bezpieczeństwo danych i walidacja wejścia,
     budowa i wykorzystanie REST API (GET, POST).
+
 Projekt udostępniony do celów edukacyjnych – nie zawiera danych wrażliwych i może być rozwijany przez studentów.
 W razie pytań proszę kontaktować się z prowadzeniem zajęć.
 

@@ -1,4 +1,4 @@
-# Importujemy instancję SQLAlchemy z pliku __init__.py (tam jest db = SQLAlchemy())
+# Importujemy instancję SQLAlchemy z pliku app/__init__.py (tam jest db = SQLAlchemy())
 from . import db
 
 # 🏔️ Model reprezentujący szczyt górski (tabelę w bazie danych)

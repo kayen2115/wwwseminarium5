@@ -83,8 +83,8 @@ with app.app_context():
     # Uruchom funkcje testowe
     if __name__ == '__main__':
         import_peaks_from_csv()
-        #add_new_peaks()
-        #delete_custom_peaks()
+        add_new_peaks()
+        # delete_custom_peaks()
         show_peaks()
 
 

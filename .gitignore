@@ -24,7 +24,7 @@ instance/
 *.sqlite3
 
 # Migracje Alembic (można pominąć wersje lokalne)
-migrations/versions/
+migrations/
 
 # Pliki przesłane przez użytkowników
 app/static/uploads/
