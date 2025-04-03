@@ -1,0 +1,43 @@
+# Środowisko wirtualne
+venv/
+ENV/
+env/
+
+# Pliki IDE / edytorów
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Baza danych (SQLite)
+instance/
+*.db
+*.sqlite3
+
+# Migracje Alembic (można pominąć wersje lokalne)
+migrations/versions/
+
+# Pliki przesłane przez użytkowników
+app/static/uploads/
+
+# Zrzuty sesji / testów
+*.log
+*.tmp
+
+# Konfiguracje środowiskowe
+config.py
+.env
+*.env
+
+# Pliki backup
+*~
+*.bak

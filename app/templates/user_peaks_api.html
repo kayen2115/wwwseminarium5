@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Zdobycia użytkownika (API){% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Sprawdź zdobycia przez API</h2>
+  <input type="text" id="username" placeholder="Nazwa użytkownika">
+  <button onclick="loadEntries()" class="btn btn-primary">Pobierz dane</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  async function loadEntries() {
+    const username = document.getElementById("username").value;
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "<p>Ładowanie danych...</p>";
+
+    const response = await fetch(`/api/user/${username}/entries`);
+    const data = await response.json();
+
+    if (data.error) {
+      resultDiv.innerHTML = `<p style='color:red'>${data.error}</p>`;
+    } else {
+      let html = `<h4>Zdobycia dla: ${username}</h4><ul>`;
+      data.forEach(entry => {
+        html += `<li>${entry.peak} - ${entry.date} - ${entry.notes}</li>`;
+      });
+      html += `</ul>`;
+      resultDiv.innerHTML = html;
+    }
+  }
+</script>
+{% endblock %}

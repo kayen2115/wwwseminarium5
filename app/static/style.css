@@ -1,0 +1,31 @@
+/* Ogólny styl aplikacji */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  header {
+    background-color: #4b4b8f;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  footer {
+    background-color: #ddd;
+    padding: 1em;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  
+  main {
+    padding: 2em;
+  }
+  
+  h2 {
+    color: #4b4b8f;
+  }
+

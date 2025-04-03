@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Szczyty do zdobycia{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Szczyty Korony Gór Polski</h2>
+  <table class="table">
+    <tr><th>Nazwa</th><th>Wysokość</th><th>Pasmo</th></tr>
+    {% for peak in peaks %}
+    <tr><td>{{ peak.name }}</td><td>{{ peak.height }}</td><td>{{ peak.pasmo }}</td></tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('users.user_form') }}" class="btn btn-primary">Zobacz zdobycia użytkownika</a>
+  <a href="{{ url_for('user_api.user_api_form') }}" class="btn btn-info">Sprawdź zdobycia (API/fetch)</a>
+</div>
+{% endblock %}

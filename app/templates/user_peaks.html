@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Zdobycia użytkownika{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Sprawdź zdobycia użytkownika</h2>
+  <form method="POST">
+    <input type="text" name="username" placeholder="Nazwa użytkownika" required>
+    <button type="submit" class="btn btn-success">Sprawdź</button>
+  </form>
+
+  {% if entries %}
+    <h3>Zdobycia dla: {{ username|capitalize }}</h3>
+    <ul>
+      {% for entry in entries %}
+      <li>{{ entry.peak.name }} – {{ entry.date }} – {{ entry.notes }}</li>
+      {% endfor %}
+    </ul>
+  {% elif username %}
+    <p>Brak wpisów lub użytkownik nie istnieje.</p>
+  {% endif %}
+</div>
+{% endblock %}
