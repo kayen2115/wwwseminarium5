@@ -4,8 +4,12 @@
 <div class="container">
   <h2>Sprawdź zdobycia użytkownika</h2>
   <form method="POST">
-    <input type="text" name="username" placeholder="Nazwa użytkownika" required>
-    <button type="submit" class="btn btn-success">Sprawdź</button>
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.username.label }}
+      {{ form.username(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-success") }}
   </form>
 
   {% if entries %}

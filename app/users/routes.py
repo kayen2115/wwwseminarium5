@@ -1,19 +1,41 @@
 from flask import Blueprint, render_template, request, jsonify
 from app.models import User
 from datetime import datetime
+from app.forms.forms import UsernameForm  
+
 
 user_bp = Blueprint('users', __name__)
 
+# @user_bp.route('/users', methods=['GET', 'POST'])
+# def user_form():
+#     entries = []
+#     username = None
+#     if request.method == 'POST':
+#         username = request.form['username']
+#         user = User.query.filter_by(username=username).first()
+#         if user:
+#             entries = user.entries  # Lista PeakEntry
+#     return render_template('user_peaks.html', username=username, entries=entries, year=datetime.now().year)
+
 @user_bp.route('/users', methods=['GET', 'POST'])
 def user_form():
+    form = UsernameForm()
     entries = []
     username = None
-    if request.method == 'POST':
-        username = request.form['username']
+
+    if form.validate_on_submit():
+        username = form.username.data
         user = User.query.filter_by(username=username).first()
         if user:
-            entries = user.entries  # Lista PeakEntry
-    return render_template('user_peaks.html', username=username, entries=entries, year=datetime.now().year)
+            entries = user.entries
+
+    return render_template(
+        'user_peaks.html',
+        form=form,
+        username=username,
+        entries=entries,
+        year=datetime.now().year
+    )
 
 # Prosty endpoint API (JSON)
 # Ta dekorowana funkcja obsługuje zapytania HTTP kierowane pod adres:
