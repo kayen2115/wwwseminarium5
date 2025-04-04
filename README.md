@@ -39,6 +39,7 @@ venv\Scripts\activate         # (Windows)
 
 1. Zainstaluj zależności:
 pip install -r requirements.txt
+wgraj do głównego katalogu projektu plik config.py umieszczony w katalogu Seminarium-5 na Teams'ach
 
 2. Dodaj ustawienie zmiennej zmianną FLASK_APP do środowiska wirtualnego:
 - jeśli używasz PowerShell to dodaj w pliku /venv/Scripts/Activate.ps1 tuż przed linią '# SIG # Begin signature block' dodaj następująca linię:
