@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Dodaj zdobycie szczytu{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Dodaj nowe zdobycie szczytu</h2>
+  <form id="entryForm">
+    <div class="mb-3">
+      <label for="username" class="form-label">Nazwa użytkownika</label>
+      <input type="text" id="username" class="form-control" placeholder="Wpisz nazwę użytkownika" required>
+    </div>
+    <div class="mb-3">
+      <label for="peak" class="form-label">Nazwa szczytu</label>
+      <input type="text" id="peak" class="form-control" placeholder="Wpisz nazwę szczytu" required>
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">Data zdobycia</label>
+      <input type="date" id="date" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="notes" class="form-label">Notatki</label>
+      <textarea id="notes" class="form-control" placeholder="Dodaj notatki (opcjonalnie)"></textarea>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="submitEntry()">Dodaj zdobycie</button>
+  </form>
+  <div id="result" class="mt-3"></div>
+</div>
+
+<script>
+    async function submitEntry() {
+      const username = document.getElementById("username").value;
+      const peak = document.getElementById("peak").value;
+      const date = document.getElementById("date").value;
+      const notes = document.getElementById("notes").value;
+  
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "<p>Przetwarzanie...</p>";
+  
+      try {
+        const response = await fetch('/users/api/entry', { // Corrected endpoint
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, peak, date, notes }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          resultDiv.innerHTML = `<p style="color:green">Dodano zdobycie!</p>`;
+        } else {
+          resultDiv.innerHTML = `<p style="color:red">${data.error || 'Wystąpił błąd'}</p>`;
+        }
+      } catch (error) {
+        resultDiv.innerHTML = `<p style="color:red">Błąd połączenia z serwerem</p>`;
+      }
+    }
+  </script>
+{% endblock %}

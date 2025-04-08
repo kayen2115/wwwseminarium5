@@ -26,10 +26,12 @@ def create_app():
     from .home.routes import home_bp
     from .users.routes import user_bp
     from .user_api.routes import user_api_bp
+    from app.user_api_entry.routes import user_api_entry_bp
 
     app.register_blueprint(home_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(user_api_bp)
+    app.register_blueprint(user_api_entry_bp)
     CORS(app, origins=["http://127.0.0.1:5000"])  # konfiguracja CORS
     # 🔹 Konfiguracja CORS (Cross-Origin Resource Sharing)
     # 
