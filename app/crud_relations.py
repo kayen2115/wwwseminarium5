@@ -13,7 +13,7 @@ app = create_app()
 with app.app_context():
     # Dodaj użytkowników (jeśli nie istnieją)
     def add_users():
-        user1 = User.query.filter_by(username="kasia").first()
+        user1 = User.query.filter_by(username="kasia").first() # FROM User SELECT * WHERE username = "kasia" LIMIT 1
         if not user1:
             user1 = User(username="kasia", email="kasia@example.com")
             db.session.add(user1)

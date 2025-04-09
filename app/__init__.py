@@ -18,7 +18,7 @@ def create_app():
     app.config.from_object(Config)  # Wczytanie konfiguracji z pliku config.py
 
     # Inicjalizacja rozszerzenia SQLAlchemy (podpięcie bazy do aplikacji Flask)
-    db.init_app(app)
+    db.init_app(app) # Tworzymy bazę danych i podpinamy ją do aplikacji Flask 
 
     from . import models
     
