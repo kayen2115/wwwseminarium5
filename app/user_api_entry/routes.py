@@ -8,7 +8,7 @@ def add_entry(username, peak, date, notes):
         # Convert the date string to a datetime object
         date = datetime.strptime(date, '%Y-%m-%d').date()
     except ValueError:
-        return jsonify({"error": "Invalid date format"}), 400
+        return 5
     # Find the user and peak in the database
     user = User.query.filter_by(username=username).first()
     peak = Peak.query.filter_by(name=peak).first()
@@ -52,6 +52,8 @@ def user_api_entry_form():
             return jsonify({"error": "Peak not found"}), 400
         elif response == 4:
             return jsonify({"error": "Failed to add entry"}), 400
+        elif response == 5:
+            return jsonify({"error": "Invalid date format"}), 400
 
       
     return render_template('user_peaks_api_entry.html')
